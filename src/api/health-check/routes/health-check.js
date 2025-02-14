@@ -3,10 +3,11 @@ module.exports = {
     {
       method: 'GET',
       path: '/api/_health',
-      handler: 'health.check',
+      handler: 'health-check.check',
       config: {
         auth: false,
         policies: [],
+        middlewares: []
       }
     }
   ]
