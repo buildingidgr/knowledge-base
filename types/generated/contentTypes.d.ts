@@ -365,8 +365,8 @@ export interface AdminUser extends Schema.CollectionType {
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
+    description: '';
     displayName: 'Article';
-    name: 'article';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -374,7 +374,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    author: Attribute.String;
+    author: Attribute.String & Attribute.Required;
     category: Attribute.Enumeration<
       [
         'structural_engineering',
@@ -386,7 +386,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         'renovation',
         'urban_planning'
       ]
-    >;
+    > &
+      Attribute.Required;
     content: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -395,9 +396,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    isPublic: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isPublic: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     publishedAt: Attribute.DateTime;
-    slug: Attribute.UID<'api::article.article', 'title'>;
+    slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
