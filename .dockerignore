@@ -1,0 +1,10 @@
+.env
+.env.*
+node_modules
+.git
+.gitignore
+.cache
+build
+.tmp
+.DS_Store
+.strapi-updater.json 
