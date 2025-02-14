@@ -7,5 +7,11 @@ export default ({ env }) => ({
       },
       jwtSecret: process.env.JWT_SECRET,
     },
-  }
+  },
+  'content-manager': {
+    enabled: true,
+  },
+  'content-type-builder': {
+    enabled: true,
+  },
 });
