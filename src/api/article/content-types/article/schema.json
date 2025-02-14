@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": "Knowledge base articles for civil engineers and architects"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "structural_engineering",
+        "architectural_design",
+        "construction_management",
+        "building_codes",
+        "materials_science",
+        "sustainability",
+        "renovation",
+        "urban_planning"
+      ],
+      "required": true
+    },
+    "tags": {
+      "type": "json"
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "seoDescription": {
+      "type": "text"
+    },
+    "isPublic": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+} 
