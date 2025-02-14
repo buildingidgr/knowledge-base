@@ -1,4 +1,3 @@
-
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
@@ -82,8 +81,36 @@ This is the backend service for the Mechlabs platform's knowledge base, serving 
 
 ### Prerequisites
 
-- Node.js v18.x
-- npm v10.x
+- Node.js v18.x or v20.x
+- npm v6.x or higher
+
+### Version Management
+
+We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions:
+
+```bash
+# First install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Restart terminal or run:
+source ~/.bashrc  # or source ~/.zshrc for zsh users
+
+# Verify nvm installation first
+command -v nvm >/dev/null 2>&1 || {
+    echo "Loading nvm..."
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+
+# Then install and use Node.js 18.x
+nvm install 18
+nvm use 18
+
+# Verify versions
+node -v  # Should show v18.x.x
+npm -v   # Should show 6.x.x-9.x.x
+```
 
 ### Installation
 
@@ -96,6 +123,8 @@ cd knowledge-base
 2. Install dependencies
 ```bash
 npm install
+# Install Strapi CLI globally (required for build command)
+npm install -g @strapi/strapi
 ```
 
 3. Start the development server
@@ -134,4 +163,3 @@ This backend implements:
 ## License
 
 [Chris's123 License]
->>>>>>> upstream/main
