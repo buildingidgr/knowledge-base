@@ -4,30 +4,48 @@
  * article controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
-
-module.exports = createCoreController('api::article.article', ({ strapi }) => ({
+module.exports = {
   async find(ctx) {
-    console.log('DEBUG: Article find method called');
-    console.log('DEBUG: Query:', ctx.query);
-    
     try {
-      // Check if articles exist in the database
-      const count = await strapi.db.query('api::article.article').count();
-      console.log('DEBUG: Total articles in database:', count);
+      const entries = await strapi.entityService.findMany('api::article.article', {
+        ...ctx.query,
+      });
 
-      // Get the raw articles
-      const rawArticles = await strapi.db.query('api::article.article').findMany({});
-      console.log('DEBUG: Raw articles:', JSON.stringify(rawArticles, null, 2));
+      const sanitizedEntries = await this.sanitizeOutput(entries, ctx);
 
-      // Call the parent implementation
-      const { data, meta } = await super.find(ctx);
-      console.log('DEBUG: Response:', { data, meta });
-      
-      return { data, meta };
+      return {
+        data: sanitizedEntries,
+        meta: { count: sanitizedEntries.length },
+      };
     } catch (error) {
-      console.error('DEBUG: Error in find method:', error);
-      throw error;
+      console.error('Error in find method:', error);
+      ctx.throw(500, error);
     }
-  }
-})); 
+  },
+
+  async findOne(ctx) {
+    try {
+      const { id } = ctx.params;
+      const entry = await strapi.entityService.findOne('api::article.article', id, {
+        ...ctx.query,
+      });
+
+      const sanitizedEntry = await this.sanitizeOutput(entry, ctx);
+
+      return {
+        data: sanitizedEntry,
+      };
+    } catch (error) {
+      console.error('Error in findOne method:', error);
+      ctx.throw(500, error);
+    }
+  },
+
+  async sanitizeOutput(data, ctx) {
+    const auth = await strapi.plugins['users-permissions'].services.jwt.getToken(ctx);
+    
+    return await strapi.entityService.sanitizeOutput(data, 'api::article.article', {
+      auth,
+    });
+  },
+}; 

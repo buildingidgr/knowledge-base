@@ -4,6 +4,15 @@
  * article service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+module.exports = {
+  async find(params) {
+    return await strapi.db.query('api::article.article').findMany(params);
+  },
 
-module.exports = createCoreService('api::article.article'); 
+  async findOne(id, params) {
+    return await strapi.db.query('api::article.article').findOne({
+      where: { id },
+      ...params,
+    });
+  },
+}; 
