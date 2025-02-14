@@ -96,20 +96,7 @@ logs
 results
 node_modules
 .node_history
-
-############################
-# Package managers
-############################
-
-.yarn/*
-!.yarn/cache
-!.yarn/unplugged
-!.yarn/patches
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-yarn-error.log
+package-lock.json
 
 ############################
 # Tests
@@ -124,8 +111,11 @@ coverage
 .env
 license.txt
 exports
-.strapi
+*.cache
 dist
 build
 .strapi-updater.json
-.strapi-cloud.json
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

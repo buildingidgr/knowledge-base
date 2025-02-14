@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install && npm run build"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/api/_health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+numReplicas = 1
+
+[service]
+internal_port = 1337 
