@@ -24,5 +24,15 @@ module.exports = {
         middlewares: [],
       },
     },
+    {
+      method: 'GET',
+      path: '/test',  // Simple test route
+      handler: (ctx) => {
+        return { message: 'Test route works!' };
+      },
+      config: {
+        auth: false,
+      }
+    }
   ],
 }; 
