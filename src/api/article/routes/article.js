@@ -1,46 +1,34 @@
-module.exports = {
-  routes: [
-    {
-      method: 'GET',
-      path: '/articles',
-      handler: 'article.find',
-      config: {
-        policies: [],
-        auth: false
-      }
+'use strict';
+
+/**
+ * article router
+ */
+
+const { createCoreRouter } = require('@strapi/strapi').factories;
+
+module.exports = createCoreRouter('api::article.article', {
+  config: {
+    find: {
+      auth: false,
+      policies: [],
+      middlewares: [],
     },
-    {
-      method: 'GET',
-      path: '/articles/:id',
-      handler: 'article.findOne',
-      config: {
-        policies: [],
-        auth: false
-      }
+    findOne: {
+      auth: false,
+      policies: [],
+      middlewares: [],
     },
-    {
-      method: 'POST',
-      path: '/articles',
-      handler: 'article.create',
-      config: {
-        policies: []
-      }
+    create: {
+      policies: [],
+      middlewares: [],
     },
-    {
-      method: 'PUT',
-      path: '/articles/:id',
-      handler: 'article.update',
-      config: {
-        policies: []
-      }
+    update: {
+      policies: [],
+      middlewares: [],
     },
-    {
-      method: 'DELETE',
-      path: '/articles/:id',
-      handler: 'article.delete',
-      config: {
-        policies: []
-      }
-    }
-  ]
-}; 
+    delete: {
+      policies: [],
+      middlewares: [],
+    },
+  },
+}); 
