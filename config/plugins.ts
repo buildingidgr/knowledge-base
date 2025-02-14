@@ -7,9 +7,5 @@ export default ({ env }) => ({
       },
       jwtSecret: process.env.JWT_SECRET,
     },
-  },
-  'api::article': {
-    enabled: true,
-    resolve: './src/api/article'
-  },
+  }
 });
