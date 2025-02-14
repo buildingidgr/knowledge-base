@@ -365,8 +365,8 @@ export interface AdminUser extends Schema.CollectionType {
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
-    description: 'Knowledge base articles for civil engineers and architects';
     displayName: 'Article';
+    name: 'article';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -374,8 +374,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    attachments: Attribute.Media<'images' | 'files' | 'videos', true>;
-    author: Attribute.String & Attribute.Required;
+    author: Attribute.String;
     category: Attribute.Enumeration<
       [
         'structural_engineering',
@@ -387,8 +386,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         'renovation',
         'urban_planning'
       ]
-    > &
-      Attribute.Required;
+    >;
     content: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -397,14 +395,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    isPublic: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    metadata: Attribute.JSON;
+    isPublic: Attribute.Boolean & Attribute.DefaultTo<false>;
     publishedAt: Attribute.DateTime;
-    seoDescription: Attribute.Text;
-    slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
-    tags: Attribute.JSON;
+    slug: Attribute.UID<'api::article.article', 'title'>;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
