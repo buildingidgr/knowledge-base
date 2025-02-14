@@ -15,6 +15,10 @@ module.exports = [
       frameguard: false,
     },
   },
+  {
+    name: 'global::health-check',
+    config: {},
+  },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
