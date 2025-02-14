@@ -73,9 +73,9 @@ This is the backend service for the Mechlabs platform's knowledge base, serving 
 ## Features
 
 - Content management system for engineering and architectural resources
-- Integration with 3rd party authentication service
 - RESTful API endpoints for content delivery
 - Role-based access control
+- Built-in authentication system
 
 ## Getting Started
 
@@ -158,7 +158,6 @@ This backend implements:
 - JWT authentication
 - Role-based access control
 - API token authentication
-- Integration with external auth service
 
 ## License
 
