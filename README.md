@@ -59,3 +59,77 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+# Mechlabs Knowledge Base Backend
+
+This is the backend service for the Mechlabs platform's knowledge base, serving Greek Civil Engineers and architects with essential information and resources.
+
+## Technology Stack
+
+- **Strapi**: Headless CMS for content management
+- **Node.js**: Runtime environment
+- **SQLite**: Default database (can be changed to PostgreSQL/MySQL for production)
+
+## Features
+
+- Content management system for engineering and architectural resources
+- Integration with 3rd party authentication service
+- RESTful API endpoints for content delivery
+- Role-based access control
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18.x
+- npm v10.x
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone [repository-url]
+cd knowledge-base
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run develop
+```
+
+The admin panel will be available at: http://localhost:1337/admin
+
+### Environment Variables
+
+Create a `.env` file in the root directory and add the following:
+
+```env
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=[your-app-keys]
+API_TOKEN_SALT=[your-token-salt]
+ADMIN_JWT_SECRET=[your-admin-jwt-secret]
+JWT_SECRET=[your-jwt-secret]
+```
+
+## API Documentation
+
+Once the server is running, you can access the API documentation at:
+http://localhost:1337/documentation
+
+## Security
+
+This backend implements:
+- JWT authentication
+- Role-based access control
+- API token authentication
+- Integration with external auth service
+
+## License
+
+[Your License]
