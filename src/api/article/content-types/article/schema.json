@@ -4,8 +4,7 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article",
-    "description": "Knowledge base articles for civil engineers and architects"
+    "displayName": "Article"
   },
   "options": {
     "draftAndPublish": true
@@ -23,8 +22,7 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title",
-      "required": true
+      "targetField": "title"
     },
     "category": {
       "type": "enumeration",
@@ -37,36 +35,14 @@
         "sustainability",
         "renovation",
         "urban_planning"
-      ],
-      "required": true
-    },
-    "tags": {
-      "type": "json"
-    },
-    "attachments": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
       ]
     },
     "author": {
-      "type": "string",
-      "required": true
-    },
-    "metadata": {
-      "type": "json"
-    },
-    "seoDescription": {
-      "type": "text"
+      "type": "string"
     },
     "isPublic": {
       "type": "boolean",
-      "default": false,
-      "required": true
+      "default": false
     }
   }
 } 
