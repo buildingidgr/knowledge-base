@@ -6,6 +6,16 @@ export default ({ env }) => ({
         expiresIn: '7d',
       },
       jwtSecret: process.env.JWT_SECRET,
+      permissions: {
+        application: {
+          controllers: {
+            article: {
+              find: { enabled: true },
+              findOne: { enabled: true }
+            }
+          }
+        }
+      }
     },
   },
   'content-manager': {

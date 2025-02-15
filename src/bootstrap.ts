@@ -16,41 +16,31 @@ export default async ({ strapi }) => {
     }
   }
 
-  // Set default permissions for public role
+  // Find the public role
   const publicRole = await strapi
     .query('plugin::users-permissions.role')
     .findOne({ where: { type: 'public' } });
 
   if (publicRole) {
-    const permissions = await strapi
-      .query('plugin::users-permissions.permission')
-      .findMany({ where: { role: publicRole.id } });
+    // Create article permissions
+    const actions = [
+      'api::article.article.find',
+      'api::article.article.findOne'
+    ];
 
-    // Check if article permissions exist
-    const hasArticlePermissions = permissions.some(
-      (permission) => permission.controller === 'article'
+    const permissions = await Promise.all(
+      actions.map(action => {
+        return strapi.query('plugin::users-permissions.permission').create({
+          data: {
+            action: action,
+            role: publicRole.id,
+            enabled: true
+          }
+        });
+      })
     );
 
-    if (!hasArticlePermissions) {
-      console.log('Setting up article permissions...');
-      
-      // Create permissions for article
-      await strapi.query('plugin::users-permissions.permission').create({
-        data: {
-          action: 'api::article.article.find',
-          role: publicRole.id,
-          enabled: true,
-        },
-      });
-
-      await strapi.query('plugin::users-permissions.permission').create({
-        data: {
-          action: 'api::article.article.findOne',
-          role: publicRole.id,
-          enabled: true,
-        },
-      });
-
+    if (permissions.length > 0) {
       console.log('Article permissions created successfully');
     }
   }
