@@ -9,35 +9,18 @@
     "name": "article"
   },
   "options": {
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string",
       "required": true,
-      "unique": true,
-      "configurable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "unique": true
     },
     "content": {
       "type": "richtext",
-      "required": true,
-      "configurable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "required": true
     },
     "category": {
       "type": "enumeration",
@@ -48,32 +31,14 @@
         "building_codes",
         "materials_science",
         "sustainability"
-      ],
-      "configurable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      ]
     },
     "author": {
-      "type": "string",
-      "configurable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "type": "string"
     },
     "isPublic": {
       "type": "boolean",
-      "default": false,
-      "configurable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "default": false
     }
   }
 } 

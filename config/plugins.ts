@@ -5,15 +5,8 @@ export default ({ env }) => ({
       jwt: {
         expiresIn: '7d',
       },
-      jwtSecret: process.env.JWT_SECRET,
+      jwtSecret: env('JWT_SECRET'),
     },
-  },
-  'i18n': {
-    enabled: true,
-    config: {
-      locales: ['en'],
-      defaultLocale: 'en',
-    }
   },
   'content-manager': {
     enabled: true,

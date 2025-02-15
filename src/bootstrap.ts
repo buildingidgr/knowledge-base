@@ -1,4 +1,6 @@
-export default async ({ strapi }) => {
+import type { Strapi } from '@strapi/strapi';
+
+export default async ({ strapi }: { strapi: Strapi }) => {
   // Register the article content type if it doesn't exist
   const existingType = await strapi.query('content-type-builder.content-types').findOne({
     where: { singularName: 'article' }
@@ -41,7 +43,7 @@ export default async ({ strapi }) => {
     );
 
     if (permissions.length > 0) {
-      console.log('Article permissions created successfully');
+      strapi.log.info('Article permissions created successfully');
     }
   }
 }; 
