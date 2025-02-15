@@ -18,32 +18,36 @@ export default async ({ strapi }: { strapi: Strapi }) => {
     }
   }
 
-  // Find the public role
-  const publicRole = await strapi
-    .query('plugin::users-permissions.role')
-    .findOne({ where: { type: 'public' } });
+  try {
+    // Find the public role
+    const publicRole = await strapi
+      .query('plugin::users-permissions.role')
+      .findOne({ where: { type: 'public' } });
 
-  if (publicRole) {
-    // Create article permissions
-    const actions = [
-      'api::article.article.find',
-      'api::article.article.findOne'
-    ];
+    if (publicRole) {
+      // Create article permissions
+      const actions = [
+        'api::article.article.find',
+        'api::article.article.findOne'
+      ];
 
-    const permissions = await Promise.all(
-      actions.map(action => {
-        return strapi.query('plugin::users-permissions.permission').create({
-          data: {
-            action: action,
-            role: publicRole.id,
-            enabled: true
-          }
-        });
-      })
-    );
+      const permissions = await Promise.all(
+        actions.map(action => {
+          return strapi.query('plugin::users-permissions.permission').create({
+            data: {
+              action: action,
+              role: publicRole.id,
+              enabled: true
+            }
+          });
+        })
+      );
 
-    if (permissions.length > 0) {
-      strapi.log.info('Article permissions created successfully');
+      if (permissions.length > 0) {
+        strapi.log.info('Article permissions created successfully');
+      }
     }
+  } catch (error) {
+    strapi.log.error('Error in bootstrap:', error);
   }
 }; 
