@@ -7,7 +7,4 @@ startCommand = "npm run develop"
 healthcheckPath = "/_health"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 10
-
-[deploy.lifecycle]
-preStartCommand = "node ./config/functions/bootstrap.js" 
+restartPolicyMaxRetries = 10 

@@ -12,18 +12,32 @@
     "draftAndPublish": true,
     "comment": ""
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
       "required": true,
       "unique": true,
-      "configurable": false
+      "configurable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "content": {
       "type": "richtext",
       "required": true,
-      "configurable": false
+      "configurable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "category": {
       "type": "enumeration",
@@ -35,16 +49,31 @@
         "materials_science",
         "sustainability"
       ],
-      "configurable": false
+      "configurable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "author": {
       "type": "string",
-      "configurable": false
+      "configurable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "isPublic": {
       "type": "boolean",
       "default": false,
-      "configurable": false
+      "configurable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 } 
